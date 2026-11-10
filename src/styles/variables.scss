@@ -1,0 +1,15 @@
+// Semantic colors — point at the custom properties in globals.scss so they follow dark mode
+$color-success: var(--success);
+$color-warning: var(--warning);
+$color-error: var(--error);
+$color-muted: var(--muted);
+
+// Borders
+$border-light: var(--border);
+$border-dark: var(--border);
+
+// Breakpoints
+$bp-sm: 560px;
+$bp-md: 640px;
+$bp-lg: 900px;
+$bp-xl: 1024px;

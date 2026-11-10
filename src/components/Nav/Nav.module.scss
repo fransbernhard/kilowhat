@@ -1,0 +1,96 @@
+@use '../../styles/includes' as *;
+
+$mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+@keyframes roll-up {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+}
+
+.Nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--surface);
+    border-bottom: 1px solid $border-light;
+
+    &__Container {
+        max-width: 1024px;
+        margin: 0 auto;
+        height: 52px;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    &__Logo {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--foreground);
+        font-size: 12px;
+        font-weight: 700;
+        font-family: $mono;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition: opacity 0.15s;
+        margin-right: auto;
+        flex-shrink: 0;
+
+        &:hover {
+            opacity: 0.55;
+        }
+    }
+
+    &__FlameWrap {
+        display: inline-block;
+        height: 20px;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+
+    &__FlameTrack {
+        display: flex;
+        flex-direction: column;
+        // A few loops, then stop — decoration shouldn't run for the whole visit
+        animation: roll-up 1.2s linear 3;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
+    }
+
+    &__Flame {
+        display: block;
+        font-size: 18px;
+        line-height: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    &__Links {
+        display: flex;
+        align-items: center;
+        gap: 0.1rem;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    &__Link {
+        font-size: 12px;
+        font-family: $mono;
+        color: var(--foreground);
+        padding: 0.35rem 0.65rem;
+        border-radius: 0.4rem;
+        white-space: nowrap;
+
+        &--Active {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,246 @@
+@use '../../styles/includes' as *;
+
+$mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+.TokenCalculator {
+    background: var(--surface);
+    border: 1px solid $border-light;
+    border-radius: 1rem;
+    padding: 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    @include media-up($bp-sm) {
+        padding: 1.4rem 1.5rem;
+    }
+
+    &__Group {
+        border: 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__Legend {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    &__TableWrap {
+        overflow-x: auto;
+    }
+
+    &__Table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 460px;
+        font-size: 12px;
+
+        th {
+            font-family: $mono;
+            font-size: 11px;
+            font-weight: 600;
+            color: $color-muted;
+            text-align: left;
+            padding: 0 0.4rem 0.35rem 0;
+        }
+
+        tbody th {
+            color: var(--foreground);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.2rem 0.4rem 0.2rem 0;
+        }
+    }
+
+    &__Factor {
+        margin-left: 0.35rem;
+        color: $color-muted;
+        font-weight: 400;
+    }
+
+    &__Input {
+        width: 100%;
+        font: inherit;
+        font-family: $mono;
+        font-size: 13px;
+        color: var(--foreground);
+        background: var(--background);
+        border: 1px solid $border-light;
+        border-radius: 0.45rem;
+        padding: 0.4rem 0.5rem;
+
+        &:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 1px;
+        }
+    }
+
+    &__Hint {
+        font-size: 12px;
+        color: $color-muted;
+
+        code {
+            font-family: $mono;
+            color: var(--foreground);
+        }
+    }
+
+    &__Settings {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+
+        @include media-up($bp-md) {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        }
+    }
+
+    &__Field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 12px;
+        color: $color-muted;
+        min-width: 0;
+    }
+
+    &__Results {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+
+        @include media-up($bp-md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__Result {
+        border: 1px solid $border-light;
+        border-radius: 0.8rem;
+        padding: 0.9rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+
+        &--Mid {
+            border-color: var(--page-accent, var(--accent));
+            box-shadow: inset 0 3px 0 var(--page-accent, var(--accent));
+        }
+    }
+
+    &__ResultLabel {
+        font-size: 10px;
+        font-weight: 700;
+        font-family: $mono;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: $color-muted;
+    }
+
+    &__ResultValue {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__ResultSub {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    &__ResultList {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 12px;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        dt {
+            color: $color-muted;
+        }
+
+        dd {
+            font-family: $mono;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    &__ResultNote {
+        margin-top: 0.5rem;
+        font-size: 11px;
+        color: $color-muted;
+        line-height: 1.45;
+    }
+
+    &__Share {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__ShareTitle {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    &__Bar {
+        display: flex;
+        height: 12px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--background);
+        gap: 2px;
+    }
+
+    &__BarPart {
+        display: block;
+        height: 100%;
+
+        &--input {
+            background: #fbbf24;
+        }
+
+        &--cacheWrite {
+            background: #38bdf8;
+        }
+
+        &--cacheRead {
+            background: #818cf8;
+        }
+
+        &--output {
+            background: #e17426;
+        }
+    }
+
+    &__ShareList {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1rem;
+        font-size: 12px;
+        font-family: $mono;
+    }
+
+    &__Dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 0.35rem;
+    }
+}

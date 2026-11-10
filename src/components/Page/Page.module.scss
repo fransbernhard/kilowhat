@@ -1,0 +1,332 @@
+@use '../../styles/includes' as *;
+
+$mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+.Page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+
+    @include media-up($bp-sm) {
+        padding: 2.5rem 1.5rem 5rem;
+    }
+
+    &__Header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-left: 3px solid var(--page-accent, var(--accent));
+        padding-left: 1rem;
+    }
+
+    &__Title {
+        font-size: clamp(26px, 5vw, 34px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+    }
+
+    &__Intro {
+        font-size: 15px;
+        color: $color-muted;
+        max-width: 64ch;
+    }
+
+    &__Section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    &__Eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        font-family: $mono;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--page-accent, var(--accent));
+    }
+
+    &__SectionTitle {
+        font-size: 20px;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+    }
+
+    &__Prose {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-size: 14px;
+        line-height: 1.65;
+        max-width: 72ch;
+
+        ul,
+        ol {
+            padding-left: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        code {
+            font-family: $mono;
+            font-size: 12px;
+            background: var(--surface);
+            border: 1px solid $border-light;
+            border-radius: 0.3rem;
+            padding: 0.05rem 0.3rem;
+            overflow-wrap: anywhere;
+        }
+
+        pre {
+            font-family: $mono;
+            font-size: 12px;
+            background: var(--surface);
+            border: 1px solid $border-light;
+            border-radius: 0.6rem;
+            padding: 0.8rem 1rem;
+            overflow-x: auto;
+
+            code {
+                background: none;
+                border: 0;
+                padding: 0;
+            }
+        }
+
+        strong {
+            font-weight: 650;
+        }
+    }
+
+    &__TableWrap {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    &__Table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+
+        th,
+        td {
+            text-align: left;
+            vertical-align: top;
+            padding: 0.55rem 0.75rem 0.55rem 0;
+            border-bottom: 1px solid $border-light;
+        }
+
+        th {
+            font-family: $mono;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: $color-muted;
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+
+    &__Sources {
+        margin-top: 1rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid $border-light;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 13px;
+        color: $color-muted;
+
+        ul {
+            padding-left: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+
+    &__SourcesTitle {
+        font-size: 11px;
+        font-weight: 700;
+        font-family: $mono;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    &__Notice {
+        background: rgba(156, 163, 175, 0.08);
+        border: 1px solid $border-dark;
+        border-radius: 0.75rem;
+        padding: 0.9rem 1rem;
+        font-size: 13px;
+        color: $color-muted;
+        line-height: 1.55;
+
+        strong {
+            color: var(--foreground);
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+
+    &__Formula {
+        background: var(--surface);
+        border: 1px solid $border-light;
+        border-top: 3px solid var(--page-accent, var(--accent));
+        border-radius: 0.75rem;
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        code {
+            font-family: $mono;
+            font-size: clamp(16px, 3.5vw, 22px);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        figcaption {
+            font-size: 12px;
+            color: $color-muted;
+
+            a {
+                text-decoration: underline;
+                text-underline-offset: 2px;
+            }
+        }
+    }
+
+    &__Steps {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+
+    &__Step {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.75rem;
+    }
+
+    &__StepNumber {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: $mono;
+        font-size: 12px;
+        font-weight: 700;
+        background: var(--surface);
+        border: 1px solid var(--page-accent, $border-light);
+    }
+
+    &__StepTitle {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 2rem;
+    }
+
+    &__StepBody {
+        font-size: 13px;
+        color: $color-muted;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        code {
+            font-family: $mono;
+            font-size: 12px;
+            color: var(--foreground);
+            overflow-wrap: anywhere;
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+
+    &__Cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+
+        @include media-up($bp-sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &__Card {
+        background: var(--surface);
+        border: 1px solid $border-light;
+        border-radius: 0.9rem;
+        padding: 1.1rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    &__CardTag {
+        font-size: 10px;
+        font-weight: 600;
+        font-family: $mono;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--page-accent, $color-muted);
+    }
+
+    &__CardTitle {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    &__CardBody {
+        font-size: 13px;
+        color: $color-muted;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+
+        ul {
+            padding-left: 1.1rem;
+        }
+
+        code {
+            font-family: $mono;
+            font-size: 12px;
+            color: var(--foreground);
+            overflow-wrap: anywhere;
+        }
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
+}
